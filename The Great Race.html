@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<style>
+
+body{
+    background-image:url('Vaperwave.jpg');
+    background-repeat:no-repeat;
+    background-position:center top;
+}
+
+</style>
+<script>
+
+var randleng;
+
+//document.getElementById("redLight").style.visibility = "visible";
+//document.getElementById("greenLight").style.visibility = "hidden";
+//document.getElementById("resetButton").style.visibility = "hidden";
+
+function resetRace(){
+window.location.reload();
+}
+
+    var pos1 = 0;
+    var pos2 = 0;
+
+function startRace() {
+
+    var myVar1 = setInterval(startRace, 1000);
+    var ranNum = Math.floor(Math.random()*2);
+    randleng = Math.floor(Math.random()*5);
+
+  if(ranNum == 0){
+
+    var leng1 = pos1 + randleng;
+    pos1+=randleng;
+    document.getElementById("blueCar").style.left = leng1 + "px";
+
+    } 
+
+    else if (ranNum == 1){
+
+    var leng2 = pos2 + randleng;
+    pos2+=randleng;
+    document.getElementById("redCar").style.left = leng2 + "px";
+
+  }
+  
+if (pos1 >= 1800)
+  {
+    stopCars();
+	alertBlue();
+  }
+  
+  else if (pos2 >= 1800)
+  {
+    stopCars();
+	alertRed();
+  }
+}
+function stopCars() {
+clearInterval(myVar1);
+}
+
+function alertRed() 
+	{
+	let redAlert == 0
+	if (redAlert == 0)
+	{
+		alert("Red Car is the winner!, press the trophy to race again");
+		redAlert == 1;
+		alertRed();
+	}
+}
+
+function alertBlue() 
+	{
+	let blueAlert == 0
+	if (blueAlert == 0)
+	{
+		alert("Blue Car is the winner!, press the trophy to race again");
+		blueAlert == 1;
+		alertBlue();
+	}
+}
+
+</script>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>The Great 8-bit Race!</title>
+</head>
+
+<body>
+<img style="width:150px; height:inherit; position:absolute; top:400px;" src="blueCar.jpg" id="blueCar"/>
+<img style="width:150px; height:inherit; position:absolute; top:600px;" src="redCar.jpg" id="redCar"/>
+<img style="width:200px; height:inherit; position:absolute; right:0px; cursor:pointer;" src="trophy.jpg" id="resetButton" onclick="resetRace()"/>
+<img style="width:200px; height:inherit; cursor:pointer;" src="redLight.jpg" id="startButton" onclick="startRace()"/>
+<img style="width:200px; height:inherit; cursor.pointer;" src="greenLight.jpg" id="greenLight" />
+</body>
+
+</html>
